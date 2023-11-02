@@ -179,6 +179,12 @@ createApp({
         }
     },
     methods: {
+        getTiming(string){
+            return time = string.slice(-8, -3);
+        },
+        lastMessage(array){
+            return array[array.length -1].message;
+        }
 
     }
 }).mount('#app')

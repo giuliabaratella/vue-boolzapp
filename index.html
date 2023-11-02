@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h5 class="m-0">{{contact.name}}</h5>
-                                        <div class="txt-small">Ultimo messaggio inviato</div>
+                                        <div class="txt-small">{{lastMessage(contact.messages)}}</div>
                                     </div>
                                 </div>
                                 <div class="time pe-3">12:00</div>
@@ -94,17 +94,11 @@
                         </div>
                         <div class="main-chat overflow-y-auto ps-2 w-100 h-100 overflow-y-auto">
                             <div class="chat-container px-5 pt-3 d-flex flex-column">
-                                <div class="msg sent-msg">
+                                <div class="msg" v-for="msg in contacts[0].messages" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" >
                                    <div class="msg-text">
-                                    Ciao
+                                    {{msg.message}}
                                    </div> 
-                                   <div class="msg-time">15:30</div>
-                                </div>
-                                <div class="msg received-msg">
-                                   <div class="msg-text">
-                                    Ciao
-                                   </div> 
-                                   <div class="msg-time">15:30</div>
+                                   <div class="msg-time">{{getTiming(msg.date)}}</div>
                                 </div>
                                 
                             </div>
