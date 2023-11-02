@@ -55,13 +55,13 @@
 
                         <!-- contacts  -->
                         <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
-                            <div class="contact-box w-100 py-2 border d-flex justify-content-between">
+                            <div class="contact-box w-100 py-2 border d-flex justify-content-between" v-for="(contact,index) in contacts" :key="contact.id">
                                 <div class="d-flex ps-3">
                                     <div class="user-img-box">
-                                        <img class="user-img" src="img/avatar_1.jpg" alt="User profile pic">
+                                        <img class="user-img" :src="contact.avatar" :alt="contact.name">
                                     </div>
                                     <div class="ps-3">
-                                        <h5 class="m-0">Nome utente</h5>
+                                        <h5 class="m-0">{{contact.name}}</h5>
                                         <div class="txt-small">Ultimo messaggio inviato</div>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="js/data.js" type="module"></script>
+    <!-- <script type="module" src="js/data.js" ></script> -->
     <script src="js/script.js"></script>
 </body>
 
