@@ -9,11 +9,11 @@
 	--color-light-icons: #b1b1b1;
 	--color-sent-message: #d5f9ba;
 	--color-notification: #8edafc;
+    --color-searchbar-bg: #fafafa;
     --color-background: linear-gradient(180deg, #009688 24.99%, #DCDBD3 25%);
 }
 body {
     font-family: 'Lato', sans-serif;
-    font-family: 'Luckiest Guy', cursive;
 }
 
 #app{
@@ -23,8 +23,8 @@ body {
     background:var(--color-background);
 }
 
-.container{
-    border: 1px solid black;
+.h0 {
+    height: 0;
 }
 
 /* contacts  */
@@ -34,12 +34,40 @@ body {
 .header {
     background-color: var(--color-headers);
 }
+.user-img-box {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user-img {
+    width: 100%;
+}
+.user-icons .fa-solid {
+    font-size: 1.5em;
+    color: var(--color-text-grey);
+}
+
+/* notifications  */
 .notifications {
     background-color: var(--color-notification);
 }
-.h0 {
-    height: 0;
+.notifications-icon {
+    background-color: var(--color-white);
+    color: var(--color-notification);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 1.5em;
 }
+.notifications a {
+    color: var(--color-dark-grey);
+}
+/* search bar  */
+.search-contacts {
+    background-color: var(--color-searchbar-bg);
+}
+
 
 /* main chat  */
 .main-chat {
