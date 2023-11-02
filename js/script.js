@@ -177,6 +177,7 @@ createApp({
                 }
             ],
             activeUser: 0,
+            newMessage:'',
         }
     },
     methods: {
@@ -188,6 +189,16 @@ createApp({
         },
         openChat(i){
             this.activeUser = i;
+        },
+        addMsg(){
+            const newMsg = {
+                date: '10/01/2020 19:51:00',
+                message:this.newMessage,
+                status: 'sent',
+            }
+            console.log('ciao')
+            this.contacts[this.activeUser].messages.push(newMsg);
+            newMessage='';
         }
 
     }

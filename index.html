@@ -92,7 +92,7 @@
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
-                        <div class="main-chat overflow-y-auto ps-2 w-100 h-100 overflow-y-auto">
+                        <div class="main-chat overflow-y-auto ps-2 w-100 h-100">
                             <div class="chat-container px-5 pt-3 d-flex flex-column">
                                 <div class="msg" v-for="msg in contacts[activeUser].messages" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" >
                                    <div class="msg-text">
@@ -105,7 +105,7 @@
                         </div>
                         <div class="msg-bar p-2 d-flex justify-content-between">
                             <i class="fa-regular fa-face-smile px-5 py-2"></i>
-                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio">
+                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMsg()">
                             <i class="fa-solid fa-microphone px-5 py-2"></i>
                         </div>
                     </div>
