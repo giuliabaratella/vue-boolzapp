@@ -105,7 +105,7 @@
                         </div>
                         <div class="msg-bar p-2 d-flex justify-content-between">
                             <i class="fa-regular fa-face-smile px-5 py-2"></i>
-                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMsg()">
+                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMsg();getAnswer()">
                             <i class="fa-solid fa-microphone px-5 py-2"></i>
                         </div>
                     </div>

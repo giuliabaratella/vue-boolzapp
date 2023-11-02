@@ -196,9 +196,19 @@ createApp({
                 message:this.newMessage,
                 status: 'sent',
             }
-            console.log('ciao')
             this.contacts[this.activeUser].messages.push(newMsg);
-            newMessage='';
+            newMessage ='';
+        },
+        addAnswer(){
+            const newAnswer = {
+                date: '10/01/2020 19:51:01',
+                message:'Ok',
+                status: 'received',
+            }
+            this.contacts[this.activeUser].messages.push(newAnswer);
+        },
+        getAnswer(){
+            setTimeout(this.addAnswer, 1000);
         }
 
     }
