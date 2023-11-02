@@ -175,7 +175,8 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            activeUser: 0,
         }
     },
     methods: {
@@ -184,6 +185,9 @@ createApp({
         },
         lastMessage(array){
             return array[array.length -1].message;
+        },
+        openChat(i){
+            this.activeUser = i;
         }
 
     }

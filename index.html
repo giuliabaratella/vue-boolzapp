@@ -55,7 +55,7 @@
 
                         <!-- contacts  -->
                         <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
-                            <div class="contact-box w-100 py-2 border d-flex justify-content-between" v-for="(contact,index) in contacts" :key="contact.id">
+                            <div class="contact-box w-100 py-2 border d-flex justify-content-between" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
                                 <div class="d-flex ps-3">
                                     <div class="user-img-box">
                                         <img class="user-img" :src="contact.avatar" :alt="contact.name">
@@ -79,10 +79,10 @@
                         <div class=" header p-3 d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
                                 <div class="user-img-box">
-                                    <img class="user-img" src="img/avatar_1.jpg" alt="User profile pic">
+                                    <img class="user-img" :src="contacts[activeUser].avatar" :alt="contacts[activeUser].name">
                                 </div>
                                 <div>
-                                    <h5 class="m-0 ps-2">Contact name</h5>
+                                    <h5 class="m-0 ps-2">{{contacts[activeUser].name}}</h5>
                                     <h6 class="m-0 ps-2 fw-light">Ultimo accesso alle...</h6>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="main-chat overflow-y-auto ps-2 w-100 h-100 overflow-y-auto">
                             <div class="chat-container px-5 pt-3 d-flex flex-column">
-                                <div class="msg" v-for="msg in contacts[0].messages" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" >
+                                <div class="msg" v-for="msg in contacts[activeUser].messages" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" >
                                    <div class="msg-text">
                                     {{msg.message}}
                                    </div> 
