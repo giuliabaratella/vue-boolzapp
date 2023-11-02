@@ -89,6 +89,21 @@ body {
     background-repeat: repeat;
 }
 
+.msg {
+    padding: 10px 20px;
+    border-radius: 10px;
+    flex-grow: 0;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+.received-msg {
+    background-color: var(--color-white);
+}
+.sent-msg {
+    background-color: var(--color-sent-message);
+    align-self: flex-end;
+}
+
 /* message bar  */
 .msg-bar{
     background-color: var(--color-headers);
