@@ -26,6 +26,9 @@ body {
 .h0 {
     height: 0;
 }
+.txt-small {
+    font-size: 0.8em;
+}
 
 /* contacts  */
 .contacts {
@@ -66,6 +69,17 @@ body {
 /* search bar  */
 .search-contacts {
     background-color: var(--color-searchbar-bg);
+}
+
+/* contact box  */
+.contact-box {
+    height: fit-content;
+}
+.contact-box:hover {
+    background-color: var(--color-contact-active);
+}
+.contact-box .txt-small, .contact-box .time {
+    color: var(--color-text-grey);
 }
 
 
