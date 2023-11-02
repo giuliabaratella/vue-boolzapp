@@ -90,11 +90,21 @@ body {
 }
 
 .msg {
-    padding: 10px 20px;
     border-radius: 10px;
     flex-grow: 0;
     margin-bottom: 10px;
-    width: fit-content;
+    width: 300px;
+    position: relative;
+}
+.msg-text {
+    padding: 15px;
+}
+.msg-time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.7em;
+    color: var(--color-text-grey);
 }
 .received-msg {
     background-color: var(--color-white);
