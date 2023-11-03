@@ -63,7 +63,7 @@
                                     <h5 class="m-0 px-2">{{contact.name}}</h5>
                                     <div class="txt-small px-2">{{lastMessage(contact.messages)}}</div>
                                 </div>
-                                <div class="time col-2">12:00</div>
+                                <div class="time col-2">{{lastMsgTime(contact.messages)}}</div>
                             </div>
                             
                         </div>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="msg-bar p-2 d-flex justify-content-between">
                             <i class="fa-regular fa-face-smile px-5 py-2"></i>
-                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMsg();getAnswer()">
+                            <input type="text" class="form-control w-75" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMsg()">
                             <i class="fa-solid fa-microphone px-5 py-2"></i>
                         </div>
                     </div>

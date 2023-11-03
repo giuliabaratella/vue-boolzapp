@@ -179,6 +179,19 @@ createApp({
             activeUser: 0,
             newMessage:'',
             searchContact:'',
+            possibleAnswers: [
+                'Domani ci vediamo?',
+                'Scusa, ti richiamo più tardi',
+                'Grazie!',
+                'Prova a sentire Claudia',
+                'A tra poco',
+                'Mi sono ricordato che devo comprare il pane',
+                'Devo scappare',
+                'Ho voglia di un gelato',
+                'Hai più sentito Davide?',
+                'Ti aggiorno più tardi',
+                'Hai visto il meteo?',
+            ],
         }
     },
     methods: {
@@ -202,19 +215,30 @@ createApp({
                 message:this.newMessage,
                 status: 'sent',
             }
-            this.activeContact.messages.push(newMsg);
+            if(this.newMessage !== '' && this.newMessage !== ' '){
+                this.activeContact.messages.push(newMsg);
+                this.getAnswer();
+            }
             this.newMessage = '';
         },
+        getAnswer(){
+            setTimeout(this.addAnswer, 1000);
+        },
         addAnswer(){
+            const rndMsg = this.possibleAnswers[Math.floor(Math.random() * (this.possibleAnswers.length-1))];
             const newAnswer = {
                 date: '10/01/2020 19:51:01',
-                message:'Ok',
+                message: rndMsg,
                 status: 'received',
             }
             this.activeContact.messages.push(newAnswer);
         },
-        getAnswer(){
-            setTimeout(this.addAnswer, 1000);
+        lastMsgTime(array){
+            if(array.length > 0){
+                return array[array.length -1].date.slice(-8, -3);
+            }else {
+                return ''
+            }
         },
         lastAccess(){
             const len = this.activeContact.messages.length;
