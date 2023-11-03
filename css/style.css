@@ -81,6 +81,9 @@ body {
 .contact-box .txt-small, .contact-box .time {
     color: var(--color-text-grey);
 }
+.active {
+    background-color: var(--color-headers);
+}
 
 
 /* main chat  */

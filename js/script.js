@@ -178,6 +178,7 @@ createApp({
             ],
             activeUser: 0,
             newMessage:'',
+            searchContact:'',
         }
     },
     methods: {
@@ -197,7 +198,7 @@ createApp({
                 status: 'sent',
             }
             this.contacts[this.activeUser].messages.push(newMsg);
-            newMessage ='';
+            this.newMessage = '';
         },
         addAnswer(){
             const newAnswer = {
@@ -210,7 +211,11 @@ createApp({
         getAnswer(){
             setTimeout(this.addAnswer, 1000);
         }
-
+    },
+    computed: {
+        activeContact(){
+            return this.contacts[this.activeUser];
+        }
     }
 }).mount('#app')
 
