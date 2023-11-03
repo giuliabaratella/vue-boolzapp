@@ -34,6 +34,9 @@ body {
 .contacts {
     background-color: var(--color-white);
 }
+.contact-box {
+    cursor: pointer;
+}
 .header {
     background-color: var(--color-headers);
 }

@@ -55,17 +55,15 @@
 
                         <!-- contacts  -->
                         <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
-                            <div class="contact-box w-100 py-2 border d-flex justify-content-between" :class="{'active': index === activeUser}" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
-                                <div class="d-flex ps-3">
-                                    <div class="user-img-box">
-                                        <img class="user-img" :src="contact.avatar" :alt="contact.name">
-                                    </div>
-                                    <div class="ps-3">
-                                        <h5 class="m-0">{{contact.name}}</h5>
-                                        <div class="txt-small">{{lastMessage(contact.messages)}}</div>
-                                    </div>
+                            <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser}" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
+                                <div class="user-img-box col-2">
+                                    <img class="user-img" :src="contact.avatar" :alt="contact.name">
                                 </div>
-                                <div class="time pe-3">12:00</div>
+                                <div class="col">
+                                    <h5 class="m-0 px-2">{{contact.name}}</h5>
+                                    <div class="txt-small px-2">{{lastMessage(contact.messages)}}</div>
+                                </div>
+                                <div class="time col-2">12:00</div>
                             </div>
                             
                         </div>
