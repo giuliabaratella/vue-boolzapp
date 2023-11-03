@@ -49,13 +49,13 @@
                                 <span class="input-group-text">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </span>
-                                <input type="search" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Search" v-model="searchContact"/>
+                                <input type="search" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Search" v-model="searchContact" @keyup="filterContacts()"/>
                             </div>
                         </div>
 
                         <!-- contacts  -->
                         <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
-                            <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser}" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
+                            <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser, 'd-none' : contact.visible === false }" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
                                 <div class="user-img-box col-2">
                                     <img class="user-img" :src="contact.avatar" :alt="contact.name">
                                 </div>

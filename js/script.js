@@ -223,6 +223,16 @@ createApp({
             } else {
                 return 'Unknown';
             }
+        },
+        filterContacts(){
+            this.contacts.forEach((contact)=>{
+                if (contact.name.toLowerCase().startsWith(this.searchContact)){
+                    contact.visible = true;
+                }
+                else {
+                    contact.visible = false;
+                }
+            })
         }
     },
     computed: {
