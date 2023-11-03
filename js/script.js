@@ -196,7 +196,12 @@ createApp({
     },
     methods: {
         getTiming(string){
-            return time = string.slice(-8, -3);
+            if(string.length > 5){
+                return time = string.slice(-8, -3);
+            }else {
+                return string;
+            }
+
         },
         lastMessage(array){
             if(array.length > 0){
@@ -211,7 +216,7 @@ createApp({
         },
         addMsg(){
             const newMsg = {
-                date: '10/01/2020 19:51:00',
+                date: this.currentTime(),
                 message:this.newMessage,
                 status: 'sent',
             }
@@ -227,7 +232,7 @@ createApp({
         addAnswer(){
             const rndMsg = this.possibleAnswers[Math.floor(Math.random() * (this.possibleAnswers.length-1))];
             const newAnswer = {
-                date: '10/01/2020 19:51:01',
+                date: this.currentTime(),
                 message: rndMsg,
                 status: 'received',
             }
@@ -235,7 +240,7 @@ createApp({
         },
         lastMsgTime(array){
             if(array.length > 0){
-                return array[array.length -1].date.slice(-8, -3);
+                return array[array.length -1].date;
             }else {
                 return ''
             }
@@ -257,6 +262,10 @@ createApp({
                     contact.visible = false;
                 }
             })
+        },
+        currentTime(){
+            const now = new Date();
+            return HoursMinutes = now.getHours()+ ':' + now.getMinutes();
         }
     },
     computed: {
