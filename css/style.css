@@ -70,6 +70,10 @@ body {
 .search-contacts {
     background-color: var(--color-searchbar-bg);
 }
+.search-contacts .input-group-text {
+    color:var(--color-text-grey);
+    background-color: var(--color-white);
+}
 
 /* contact box  */
 .contact-box {

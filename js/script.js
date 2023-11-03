@@ -158,21 +158,21 @@ createApp({
                     avatar: './img/avatar_8.jpg',
                     visible: true,
                     messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        }
+                        // {
+                        //     date: '10/01/2020 15:30:55',
+                        //     message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                        //     status: 'received'
+                        // },
+                        // {
+                        //     date: '10/01/2020 15:50:00',
+                        //     message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                        //     status: 'sent'
+                        // },
+                        // {
+                        //     date: '10/01/2020 15:51:00',
+                        //     message: 'OK!!',
+                        //     status: 'received'
+                        // }
                     ],
                 }
             ],
@@ -186,7 +186,12 @@ createApp({
             return time = string.slice(-8, -3);
         },
         lastMessage(array){
-            return array[array.length -1].message;
+            if(array.length > 0){
+                return array[array.length -1].message;
+            }else {
+                return 'Non ci sono messaggi'
+            }
+            
         },
         openChat(i){
             this.activeUser = i;
@@ -197,7 +202,7 @@ createApp({
                 message:this.newMessage,
                 status: 'sent',
             }
-            this.contacts[this.activeUser].messages.push(newMsg);
+            this.activeContact.messages.push(newMsg);
             this.newMessage = '';
         },
         addAnswer(){
@@ -206,10 +211,18 @@ createApp({
                 message:'Ok',
                 status: 'received',
             }
-            this.contacts[this.activeUser].messages.push(newAnswer);
+            this.activeContact.messages.push(newAnswer);
         },
         getAnswer(){
             setTimeout(this.addAnswer, 1000);
+        },
+        lastAccess(){
+            const len = this.activeContact.messages.length;
+            if(len > 0){
+                return this.activeContact.messages[len - 1].date;
+            } else {
+                return 'Unknown';
+            }
         }
     },
     computed: {
