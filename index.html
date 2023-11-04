@@ -87,13 +87,52 @@
                                     <h6 class="m-0 ps-2 fw-light" >Ultimo accesso {{lastAccess()}}</h6>
                                 </div>
                             </div>
-                            <div class="d-flex column-gap-4 user-icons pe-2">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <i class="fa-solid fa-paperclip"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="d-flex  user-icons pe-2">
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                               Cerca...
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-paperclip"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                Allega file
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click="biggerFont = true">
+                                                Ingrandisci chat
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click="biggerFont = false">
+                                                Ripristina dimensioni chat
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="main-chat overflow-y-scroll px-2 w-100 h-100">
+                        <div class="main-chat overflow-y-scroll px-2 w-100 h-100" :class="{'fs-5' : biggerFont}">
                             <div class="chat-container px-3 px-lg-5 pt-3 d-flex flex-column">
                                 <div class="msg d-flex justify-content-between row" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" @mouseover="msgHover = true" @mouseleave="msgHover = false">
                                    <div class="msg-text col-10">

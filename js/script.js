@@ -194,6 +194,7 @@ createApp({
             ],
             msgHover : false,
             splashpage: true,
+            biggerFont: false,
         }
     },
     methods: {
@@ -282,7 +283,7 @@ createApp({
         }
     },
     mounted() {
-        setTimeout(this.showApp,2000);
+        setTimeout(this.showApp,0);
     }
 }).mount('#app')
 
