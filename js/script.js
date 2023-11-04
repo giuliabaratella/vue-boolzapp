@@ -193,6 +193,7 @@ createApp({
                 'Hai visto il meteo?',
             ],
             msgHover : false,
+            splashpage: true,
         }
     },
     methods: {
@@ -270,12 +271,18 @@ createApp({
         },
         deleteMsg(i){
             this.activeContact.messages.splice(i,1);
+        },
+        showApp(){
+            this.splashpage = false
         }
     },
     computed: {
         activeContact(){
             return this.contacts[this.activeUser];
         }
+    },
+    mounted() {
+        setTimeout(this.showApp,2000);
     }
 }).mount('#app')
 
