@@ -192,6 +192,7 @@ createApp({
                 'Ti aggiorno più tardi',
                 'Hai visto il meteo?',
             ],
+            msgHover : false,
         }
     },
     methods: {
@@ -220,7 +221,7 @@ createApp({
                 message:this.newMessage,
                 status: 'sent',
             }
-            if(this.newMessage !== '' && this.newMessage !== ' '){
+            if(this.newMessage && this.newMessage.trim()){
                 this.activeContact.messages.push(newMsg);
                 this.getAnswer();
             }
@@ -266,6 +267,9 @@ createApp({
         currentTime(){
             const now = new Date();
             return HoursMinutes = now.getHours()+ ':' + now.getMinutes();
+        },
+        deleteMsg(i){
+            this.activeContact.messages.splice(i,1);
         }
     },
     computed: {

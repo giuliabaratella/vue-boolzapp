@@ -54,7 +54,7 @@
                         </div>
 
                         <!-- contacts  -->
-                        <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
+                        <div class="d-flex flex-column flex-grow-1 overflow-y-scroll">
                             <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser, 'd-none' : contact.visible === false }" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
                                 <div class="user-img-box col-2">
                                     <img class="user-img" :src="contact.avatar" :alt="contact.name">
@@ -90,13 +90,17 @@
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
-                        <div class="main-chat overflow-y-auto ps-2 w-100 h-100">
+                        <div class="main-chat overflow-y-scroll px-2 w-100 h-100">
                             <div class="chat-container px-3 px-lg-5 pt-3 d-flex flex-column">
-                                <div class="msg" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" >
-                                   <div class="msg-text">
+                                <div class="msg d-flex justify-content-between row" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" @mouseover="msgHover = true" @mouseleave="msgHover = false">
+                                   <div class="msg-text col-10">
                                     {{msg.message}}
                                    </div> 
-                                   <div class="msg-time">{{getTiming(msg.date)}}</div>
+                                   <div class="col-2">
+                                    <i class="fa-solid fa-trash p-2 msg-delete" v-if="msgHover" @click="deleteMsg(index)"></i>
+                                    <div class="msg-time">{{getTiming(msg.date)}}</div>
+                                   </div>
+                                   
                                 </div>
                                 
                             </div>

@@ -123,6 +123,14 @@ body {
     background-color: var(--color-sent-message);
     align-self: flex-end;
 }
+.msg-delete {
+    color: var(--color-text-grey);
+}
+.msg-delete:hover {
+    color: var(--color-dark-grey);
+    cursor: pointer;
+}
+
 
 /* message bar  */
 .msg-bar{
