@@ -50,13 +50,20 @@
                             </div>
                         </div>
                         <!-- notifications  -->
-                        <div class="p-3 notifications row g-0 p-2">
+                        <div class="p-3 row g-0 p-2" :class="[notificationsActive ? 'notifications-active' : 'notifications-disabled']">
                             <div class="notifications-icon d-flex align-items-center justify-content-center col-2">
-                                <i class="fa-solid fa-bell-slash"></i>
+                                <i class="fa-solid fa-bell-slash" v-if="!notificationsActive"></i>
+                                <i class="fa-solid fa-bell" v-if="notificationsActive"></i>
                             </div>
                             <div class="col">
-                                <h5 class="m-0 ps-2">Ricevi notifiche di nuovi messaggi</h5>
-                                <a href="#" class="m-0 ps-2 fw-light">Attiva notifiche desktop</a>
+                                <div v-if="!notificationsActive">
+                                    <h5 class="m-0 ps-2">Ricevi notifiche</h5>
+                                    <a href="#" class="m-0 ps-2 fw-light" @click="notificationsActive = !notificationsActive">Attiva notifiche desktop</a>
+                                </div>
+                                <div v-if="notificationsActive">
+                                    <h5 class="m-0 ps-2">Le notifiche sono abilitate</h5>
+                                    <a href="#" class="m-0 ps-2 fw-light" @click="notificationsActive = !notificationsActive">Silenzia notifiche</a>
+                                </div>
                             </div>
                         </div>
 

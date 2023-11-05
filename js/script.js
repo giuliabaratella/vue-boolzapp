@@ -196,6 +196,7 @@ createApp({
             splashpage: true,
             biggerFont: false,
             showTitle: false,
+            notificationsActive: false,
         }
     },
     methods: {

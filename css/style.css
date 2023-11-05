@@ -33,6 +33,10 @@ body {
 }
 a {
     color: var(--color-white);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 /* splashpage  */
 #splashpage {
@@ -115,16 +119,24 @@ a {
 }
 
 /* notifications  */
-.notifications {
+.notifications-disabled {
     background-color: var(--color-notification);
+}
+.notifications-active {
+    background-color: var(--color-send-msg-button-hover);
 }
 .notifications-icon {
     background-color: var(--color-white);
-    color: var(--color-notification);
     border-radius: 50%;
     height: 50px;
     width: 50px;
     font-size: 1.5em;
+}
+.notifications-icon .fa-bell-slash {
+    color: var(--color-notification);
+}
+.notifications-icon .fa-bell {
+    color: var(--color-send-msg-button-hover);
 }
 
 /* search bar  */
