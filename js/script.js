@@ -195,6 +195,7 @@ createApp({
             msgHover : false,
             splashpage: true,
             biggerFont: false,
+            showTitle: false,
         }
     },
     methods: {
@@ -275,7 +276,7 @@ createApp({
         },
         showApp(){
             this.splashpage = false
-        }
+        },
     },
     computed: {
         activeContact(){
@@ -283,7 +284,8 @@ createApp({
         }
     },
     mounted() {
-        setTimeout(this.showApp,0);
+        setTimeout(this.showApp,2000);
+        this.showTitle = true;
     }
 }).mount('#app')
 

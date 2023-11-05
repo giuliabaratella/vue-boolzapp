@@ -22,7 +22,7 @@ body {
     width: 100%;
     height: 100vh;
     min-width: 450px;
-    background:var(--color-background);
+    background: var(--color-background)
 }
 
 .h0 {
@@ -36,11 +36,60 @@ a {
 }
 /* splashpage  */
 #splashpage {
-    background-color: var(--color-send-msg-button);
+    background-image: url(../img/pattern-splashpage.png);
+    background-color: var(--color-send-msg-button-hover);
     color: var(--color-white);
     width: 100%;
     height: 100%;
+    position: relative;
 }
+.bg-splash {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-send-msg-button);
+    background-repeat: repeat;
+    border-radius: 50%;
+    position: absolute;
+
+}
+.title {
+    z-index: 1000;
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+.title h1, .title i {
+    font-size: 4em;
+}
+
+.bg-grow-enter-active {
+    animation: grow 3s;
+}
+@keyframes grow {
+0% {
+    transform: scale(1);
+}
+30% {
+    transform: scale(40);
+}
+100% {
+    transform: scale(150);
+}
+}
+.title-animation-enter-active{
+    animation: bounce-in 0.8s ease-in-out;
+}
+@keyframes bounce-in {
+0% {
+    transform: scale(0);
+}
+60% {
+    transform: scale(1.8);
+}
+100% {
+    transform: scale(1);
+}
+}
+
+
 /* contacts  */
 .contacts {
     background-color: var(--color-white);
