@@ -161,7 +161,7 @@ a {
     border-radius: 10px;
     flex-grow: 0;
     margin-bottom: 10px;
-    width: 300px;
+    width: 270px;
     position: relative;
 }
 .msg-text {
@@ -184,7 +184,30 @@ a {
 .msg-delete {
     color: var(--color-text-grey);
 }
-
+.msg.sent-msg:before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 40%;
+	border: 20px solid transparent;
+	border-left-color: var(--color-sent-message);
+	border-right: 0;
+	border-top: 0;
+	margin-top: -5px;
+	margin-right: -15px;
+}
+.msg.received-msg:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 40%;
+	border: 20px solid transparent;
+	border-right-color:var(--color-white);
+	border-left: 0;
+	border-top: 0;
+	margin-top: -5px;
+	margin-left: -15px;
+}
 
 
 /* message bar  */
