@@ -29,11 +29,11 @@
         </div>
 
         <!-- app -->
-        <div class="container h-100 py-md-4 overflow-y-hidden" :class="{'d-none' : splashpage}">
+        <div class="container h-100 py-md-4 overflow-hidden" :class="{'d-none' : splashpage}">
             <div class="row h-100 flex-nowrap">
 
                 <!-- contacts  -->
-                <div class="col-12 col-md-6 col-lg-4 contacts g-0">
+                <div class="col-12 col-md-6 col-lg-4 contacts g-0 d-md-block" :class="{'d-none' : showChat}">
                     <div class="h-100 d-flex flex-column flex-nowrap">
                         <!-- header  -->
                         <div class=" header p-3 d-flex justify-content-between align-items-center border-end">
@@ -96,7 +96,7 @@
 
 
                 <!-- main chat  -->
-                <div class="col-12 col-md-6 col-lg-8 g-0">
+                <div class="col-12 col-md-6 col-lg-8 g-0 d-md-block" :class="{'d-none' : !showChat}">
                     <div class="h-100 d-flex flex-column flex-nowrap">
                         <div class=" header p-3 d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
@@ -109,6 +109,9 @@
                                 </div>
                             </div>
                             <div class="d-flex  user-icons pe-2">
+                                <button class="btn">
+                                    <i class="fa-solid fa-circle-arrow-left" @click="showChat = !showChat"></i>
+                                </button>
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-magnifying-glass"></i>

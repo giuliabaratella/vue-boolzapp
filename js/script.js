@@ -197,6 +197,8 @@ createApp({
             biggerFont: false,
             showTitle: false,
             notificationsActive: false,
+            showChat: false,
+
         }
     },
     methods: {
@@ -218,6 +220,7 @@ createApp({
         },
         openChat(i){
             this.activeUser = i;
+            this.showChat = true;
         },
         addMsg(){
             const newMsg = {
