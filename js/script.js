@@ -198,7 +198,7 @@ createApp({
             showTitle: false,
             notificationsActive: false,
             showChat: false,
-
+            messageIndex: null,
         }
     },
     methods: {
@@ -221,6 +221,9 @@ createApp({
         openChat(i){
             this.activeUser = i;
             this.showChat = true;
+            this.$nextTick(()=> {
+                this.$refs.msgs[this.$refs.msgs.length -1].scrollIntoView({behavior: 'smooth'});
+            })
         },
         addMsg(){
             const newMsg = {
@@ -283,10 +286,19 @@ createApp({
         },
         deleteMsg(i){
             this.activeContact.messages.splice(i,1);
+            this.messageIndex = null;
         },
         showApp(){
             this.splashpage = false
         },
+        openOptions(i){
+            if (this.messageIndex === null){
+                this.messageIndex = i;
+            } else {
+                this.messageIndex = null;
+            }
+
+        }
     },
     computed: {
         activeContact(){
