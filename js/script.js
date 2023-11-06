@@ -201,6 +201,11 @@ createApp({
             messageIndex: null,
             openChatMenu: false,
             openContactsMenu: false,
+            openAddContactMenu: false,
+            newContactPopup: false,
+            newContactName: '',
+            lastId: 8,
+            chooseAvatar:'',
         }
     },
     methods: {
@@ -223,9 +228,12 @@ createApp({
         openChat(i){
             this.activeUser = i;
             this.showChat = true;
-            this.$nextTick(()=> {
-                this.$refs.msgs[this.$refs.msgs.length -1]. scrollIntoView({behavior: 'smooth'});
-            })
+            if(this.activeContact.messages.length > 0){
+                this.$nextTick(()=> {
+                    this.$refs.msgs[this.$refs.msgs.length -1]. scrollIntoView({behavior: 'smooth'});
+                })
+            }
+            
         },
         addMsg(){
             const newMsg = {
@@ -311,8 +319,34 @@ createApp({
         deleteActiveContact(){
             if (this.activeUser !== null){
                 this.contacts.splice(this.activeUser,1);
+                this.activeUser = null;
             }
-        }
+        },
+        addNewContact(){
+            let newContactImage = '';
+            if (this.chooseAvatar === '1'){
+                newContactImage = './img/avatar_1.jpg';
+            }else if (this.chooseAvatar === '2'){
+                newContactImage = './img/avatar_6.jpg';
+            }else if (this.chooseAvatar === '3'){
+                newContactImage = './img/generic-user.png';
+            }else {
+                newContactImage = './img/generic-user.png';
+            }
+            console.log(this.newContactImage)
+            const newContact = {
+                id: this.lastId + 1,
+                name: this.newContactName,
+                avatar: newContactImage,
+                visible: true,
+                messages: [],
+            }
+            if(this.newContactName && this.newContactName.trim()){
+                this.contacts.push(newContact);
+                console.log(newContact)
+            }
+
+        },
     },
     computed: {
         activeContact(){

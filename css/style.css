@@ -162,6 +162,12 @@ a:hover {
     background-color: var(--color-headers);
 }
 
+/* new contact popup  */
+.new-contact-form {
+    background-color: var(--color-sent-message);
+    color: var(--color-dark-text);
+}
+
 
 /* main chat  */
 .main-chat {

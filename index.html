@@ -44,7 +44,19 @@
                                 <h5 class="m-0 ps-2">Giulia</h5>
                             </div>
                             <div class="d-flex pe-2 user-icons">
-                                <i class="fa-solid fa-circle-notch btn"></i>
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" @click="openAddContactMenu = !openAddContactMenu">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" :class="{'show' : openAddContactMenu }" @mouseleave="openAddContactMenu = false">
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click.prevent="newContactPopup = true , openAddContactMenu= false">
+                                                Aggiungi nuovo contatto
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
                                 <i class="fa-solid fa-message btn"></i>
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" @click="openContactsMenu = !openContactsMenu">
@@ -63,6 +75,23 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- popup new contact -->
+                        <div class="new-contact-form" v-if="newContactPopup" @mouseleave="newContactPopup = false">
+                            <div class="input-group d-flex flex-column">
+                                <div class="my-3 mx-auto text-center">
+                                    <label for="contact-name" class="form-label mb-2">Nome nuovo contatto</label>
+                                    <input type="text" name="contact-image" class=" form-control mb-2" v-model="newContactName">
+                                    <label for="contact-image" class="form-label mb-2">Scegli avatar</label>
+                                    <select class="form-select mb-3" aria-label="Default select example" name="contact-image" v-model="chooseAvatar">
+                                        <option disabled value="">Scegli</option>
+                                        <option value="1">Avatar maschile</option>
+                                        <option value="2">Avatar femminile</option>
+                                        <option value="3">Avatar generico</option>
+                                        </select>
+                                </div>
+                                <button class="btn btn-success mx-auto mb-4" @click.prevent="addNewContact(), newContactPopup = false">Aggiungi</button>
                             </div>
                         </div>
                         <!-- notifications  -->
