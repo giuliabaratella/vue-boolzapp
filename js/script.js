@@ -230,6 +230,9 @@ createApp({
             }
             if(this.newMessage && this.newMessage.trim()){
                 this.activeContact.messages.push(newMsg);
+                this.$nextTick(()=> {
+                    this.$refs.msgs[this.$refs.msgs.length -1].scrollIntoView({behavior: 'smooth'});
+                })
                 this.getAnswer();
             }
             this.newMessage = '';
@@ -245,6 +248,9 @@ createApp({
                 status: 'received',
             }
             this.activeContact.messages.push(newAnswer);
+            this.$nextTick(()=> {
+                this.$refs.msgs[this.$refs.msgs.length -1].scrollIntoView({behavior: 'smooth'});
+            })
         },
         lastMsgTime(array){
             if(array.length > 0){

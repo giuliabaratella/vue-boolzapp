@@ -158,7 +158,7 @@
                         </div>
                         <div class="main-chat overflow-y-scroll px-2 w-100 h-100" :class="{'fs-5' : biggerFont}">
                             <div class="chat-container px-4 px-lg-5 pt-3 d-flex flex-column">
-                                <div class="msg d-flex justify-content-between row" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" @mouseover="msgHover = true" @mouseleave="msgHover = false">
+                                <div class="msg d-flex justify-content-between row" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" @mouseover="msgHover = true" @mouseleave="msgHover = false"  ref="msgs">
                                    <div class="msg-text col-10">
                                         {{msg.message}}
                                    </div> 
