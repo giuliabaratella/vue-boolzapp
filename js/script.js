@@ -200,6 +200,7 @@ createApp({
             showChat: false,
             messageIndex: null,
             openChatMenu: false,
+            openContactsMenu: false,
         }
     },
     methods: {
@@ -299,6 +300,18 @@ createApp({
                 this.messageIndex = null;
             }
 
+        },
+        deleteChat(){
+            this.activeContact.messages = [];
+        },
+        deleteContacts(){
+            this.contacts = [];
+            this.activeUser = null;
+        },
+        deleteActiveContact(){
+            if (this.activeUser !== null){
+                this.contacts.splice(this.activeUser,1);
+            }
         }
     },
     computed: {

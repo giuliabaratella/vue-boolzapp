@@ -43,10 +43,26 @@
                                 </div>
                                 <h5 class="m-0 ps-2">Giulia</h5>
                             </div>
-                            <div class="d-flex column-gap-4 pe-2 user-icons">
-                                <i class="fa-solid fa-circle-notch"></i>
-                                <i class="fa-solid fa-message"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="d-flex pe-2 user-icons">
+                                <i class="fa-solid fa-circle-notch btn"></i>
+                                <i class="fa-solid fa-message btn"></i>
+                                <div class="dropdown">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" @click="openContactsMenu = !openContactsMenu">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" :class="{'show' : openContactsMenu }" @mouseleave="openContactsMenu = false">
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click.prevent="deleteContacts() , openContactsMenu= false">
+                                                Elimina tutti i contatti
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click.prevent="deleteActiveContact() , openContactsMenu= false">
+                                                Elimina contatto attivo
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <!-- notifications  -->
@@ -79,15 +95,17 @@
 
                         <!-- contacts  -->
                         <div class="d-flex flex-column flex-grow-1 overflow-y-scroll">
-                            <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser, 'd-none' : contact.visible === false }" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
-                                <div class="user-img-box col-2">
-                                    <img class="user-img" :src="contact.avatar" :alt="contact.name">
+                            <div v-if="contacts !== []">
+                                <div class="contact-box row g-0 p-2" :class="{'active': index === activeUser, 'd-none' : contact.visible === false }" v-for="(contact,index) in contacts" :key="contact.id" @click="openChat(index)">
+                                    <div class="user-img-box col-2">
+                                        <img class="user-img" :src="contact.avatar" :alt="contact.name">
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="m-0 px-2">{{contact.name}}</h5>
+                                        <div class="txt-small px-2">{{lastMessage(contact.messages)}}</div>
+                                    </div>
+                                    <div class="time col-3 txt-small">{{lastMsgTime(contact.messages)}}</div>
                                 </div>
-                                <div class="col">
-                                    <h5 class="m-0 px-2">{{contact.name}}</h5>
-                                    <div class="txt-small px-2">{{lastMessage(contact.messages)}}</div>
-                                </div>
-                                <div class="time col-3 txt-small">{{lastMsgTime(contact.messages)}}</div>
                             </div>
                             
                         </div>
@@ -103,6 +121,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-8 g-0 d-md-block" :class="{'d-none' : !showChat}" v-if="activeUser !== null">
                     <div class="h-100 d-flex flex-column flex-nowrap">
+                        <!-- header  -->
                         <div class=" header p-3 d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
                                 <div class="user-img-box">
@@ -113,6 +132,7 @@
                                     <h6 class="m-0 ps-2 fw-light" >Ultimo accesso {{lastAccess()}}</h6>
                                 </div>
                             </div>
+                            <!--header icons -->
                             <div class="d-flex  user-icons pe-2">
                                 <button class="btn d-md-none">
                                     <i class="fa-solid fa-circle-arrow-left" @click="showChat = !showChat"></i>
@@ -156,11 +176,18 @@
                                                 Ripristina dimensioni chat
                                             </a>
                                         </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" @click.prevent="deleteChat() , openChatMenu= false">
+                                                Elimina tutti i messaggi
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 
                             </div>
                         </div>
+
+                        <!--chat  -->
                         <div class="main-chat overflow-y-scroll px-2 w-100 h-100" :class="{'fs-5' : biggerFont}">
                             <div class="chat-container px-4 px-lg-5 pt-3 d-flex flex-column">
                                 <div class="msg d-flex justify-content-between row" v-for="(msg,index) in activeContact.messages" :key="index" :class="[msg.status === 'sent' ? 'sent-msg' : 'received-msg']" @mouseover="msgHover = index" @mouseleave="msgHover = null, messageIndex = null"  ref="msgs">
