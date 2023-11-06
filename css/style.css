@@ -8,10 +8,11 @@
 	--color-contact-active: #e9ebeb;
 	--color-light-icons: #b1b1b1;
 	--color-sent-message: #d5f9ba;
-	--color-notification: #8edafc;
+	--color-notification-disabled: #8edafc;
     --color-searchbar-bg: #fafafa;
-    --color-send-msg-button: #009688;
-    --color-send-msg-button-hover: #0fb4a3;
+    --color-primary: #009688;
+    --color-primary-light: #0fb4a3;
+    --color-primary-transparent: #0b4741ab;
     --color-background: linear-gradient(180deg, #009688 24.99%, #DCDBD3 25%);
 }
 body {
@@ -40,7 +41,7 @@ a:hover {
 /* splashpage  */
 #splashpage {
     background-image: url(../img/pattern-splashpage.png);
-    background-color: var(--color-send-msg-button-hover);
+    background-color: var(--color-primary-light);
     color: var(--color-white);
     width: 100%;
     height: 100%;
@@ -49,7 +50,7 @@ a:hover {
 .bg-splash {
     width: 20px;
     height: 20px;
-    background-color: var(--color-send-msg-button);
+    background-color: var(--color-primary);
     background-repeat: repeat;
     border-radius: 50%;
     position: absolute;
@@ -119,10 +120,10 @@ a:hover {
 
 /* notifications  */
 .notifications-disabled {
-    background-color: var(--color-notification);
+    background-color: var(--color-notification-disabled);
 }
 .notifications-active {
-    background-color: var(--color-send-msg-button-hover);
+    background-color: var(--color-primary-light);
 }
 .notifications-icon {
     background-color: var(--color-white);
@@ -132,10 +133,10 @@ a:hover {
     font-size: 1.5em;
 }
 .notifications-icon .fa-bell-slash {
-    color: var(--color-notification);
+    color: var(--color-notification-disabled);
 }
 .notifications-icon .fa-bell {
-    color: var(--color-send-msg-button-hover);
+    color: var(--color-primary-light);
 }
 
 /* search bar  */
@@ -222,17 +223,28 @@ a:hover {
 .main-chat .dropdown-menu, .header .dropdown-menu{
     right: -10px !important;
 }
-
+/* welcome msg  */
+.start-chat {
+    background-color: var(--color-primary-light);
+    background-image: url(../img/pattern-splashpage.png);
+    border: 1px solid #0b4741ab;
+}
+.welcome-msg {
+    background-color: #0b4741ab;
+    border-radius: 20px;
+    color: var(--color-white);
+    font-size: 1.5em;
+}
 
 /* message bar  */
 .msg-bar{
     background-color: var(--color-headers);
 }
 .msg-send {
-    background-color: var(--color-send-msg-button);
+    background-color: var(--color-primary);
 }
 .msg-send:hover {
-    background-color: var(--color-send-msg-button-hover);
+    background-color: var(--color-primary-light);
 }
 .rounded-icon {
     border-radius: 50%;

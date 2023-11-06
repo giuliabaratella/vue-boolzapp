@@ -176,7 +176,7 @@ createApp({
                     ],
                 }
             ],
-            activeUser: 0,
+            activeUser: null,
             newMessage:'',
             searchContact:'',
             possibleAnswers: [
@@ -223,7 +223,7 @@ createApp({
             this.activeUser = i;
             this.showChat = true;
             this.$nextTick(()=> {
-                this.$refs.msgs[this.$refs.msgs.length -1].scrollIntoView({behavior: 'smooth'});
+                this.$refs.msgs[this.$refs.msgs.length -1]. scrollIntoView({behavior: 'smooth'});
             })
         },
         addMsg(){
