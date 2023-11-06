@@ -219,7 +219,7 @@ a:hover {
 	margin-top: -5px;
 	margin-left: -15px;
 }
-.main-chat .dropdown-menu{
+.main-chat .dropdown-menu, .header .dropdown-menu{
     right: -10px !important;
 }
 

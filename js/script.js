@@ -192,13 +192,14 @@ createApp({
                 'Ti aggiorno più tardi',
                 'Hai visto il meteo?',
             ],
-            msgHover : false,
+            msgHover : null,
             splashpage: true,
             biggerFont: false,
             showTitle: false,
             notificationsActive: false,
             showChat: false,
             messageIndex: null,
+            openChatMenu: false,
         }
     },
     methods: {
@@ -244,7 +245,7 @@ createApp({
             setTimeout(this.addAnswer, 1000);
         },
         addAnswer(){
-            const rndMsg = this.possibleAnswers[Math.floor(Math.random() * (this.possibleAnswers.length-1))];
+            const rndMsg = this.possibleAnswers[Math.floor(Math.random() * (this.possibleAnswers.length))];
             const newAnswer = {
                 date: this.currentTime(),
                 message: rndMsg,
