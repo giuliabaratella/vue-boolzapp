@@ -228,6 +228,7 @@ createApp({
         openChat(i){
             this.activeUser = i;
             this.showChat = true;
+            this.newMessage = '';
             if(this.activeContact.messages.length > 0){
                 this.$nextTick(()=> {
                     this.$refs.msgs[this.$refs.msgs.length -1]. scrollIntoView({behavior: 'smooth'});
@@ -343,7 +344,10 @@ createApp({
             }
             if(this.newContactName && this.newContactName.trim()){
                 this.contacts.push(newContact);
-                console.log(newContact)
+                console.log(newContact);
+                this.lastId++;
+                this.newContactName = '';
+                this.chooseAvatar = '';
             }
 
         },
